@@ -3,10 +3,17 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>hu.unideb.inf</groupId>
     <artifactId>uni-quiz-app</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <description>Quiz game project for Software Engineering and Technology class</description>
     <packaging>jar</packaging>
+
+    <scm>
+        <connection>scm:https://github.com/Laj01/uni-quiz-app.git</connection>
+        <developerConnection>scm:https://github.com/Laj01/uni-quiz-app.git</developerConnection>
+    </scm>
 
     <developers>
         <developer>
