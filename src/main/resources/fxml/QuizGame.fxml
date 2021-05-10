@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<BorderPane xmlns="http://javafx.com/javafx/16">
+<BorderPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.MenuController">
     <top>
         <Label text="Main Menu" BorderPane.alignment="CENTER">
             <font>
@@ -16,9 +16,7 @@
     </top>
     <center>
         <VBox alignment="CENTER" spacing="30">
-            <Button text="New Game" prefWidth="120"/>
-            <Button text="Add custom Quiz" prefWidth="120"/>
-            <Button text="Exit" prefWidth="120"/>
+            <Button fx:id="switchToMainMenu" text="Back to main menu" onAction="#switchToMainMenu" prefWidth="120"/>
         </VBox>
     </center>
     <padding>
