@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<BorderPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.MenuController">
+<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.MenuController">
     <top>
-        <Label text="Main Menu" BorderPane.alignment="CENTER">
+        <Label text="New Quiz Game" BorderPane.alignment="CENTER">
             <font>
                 <Font name="Arial bold" size="40"/>
             </font>
