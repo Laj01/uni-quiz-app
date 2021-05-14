@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.Controller.MenuController">
+<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.Controller.QuizFormController">
     <top>
         <Label text="New Quiz Form" BorderPane.alignment="CENTER">
             <font>
@@ -25,35 +25,6 @@
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-   <bottom>
-      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button mnemonicParsing="false" onAction="#switchToMainMenu" prefWidth="120.0" text="Back to Menu">
-               <HBox.margin>
-                  <Insets left="40.0" right="40.0" top="40.0" />
-               </HBox.margin>
-            </Button>
-            <Button mnemonicParsing="false" prefWidth="120.0" text="Add Question">
-               <HBox.margin>
-                  <Insets left="40.0" right="40.0" top="40.0" />
-               </HBox.margin>
-            </Button>
-            <Button mnemonicParsing="false" prefWidth="120.0" text="Save Question">
-               <HBox.margin>
-                  <Insets left="40.0" right="40.0" top="40.0" />
-               </HBox.margin>
-            </Button>
-            <Button mnemonicParsing="false" prefWidth="120.0" text="Edit Question">
-               <HBox.margin>
-                  <Insets left="40.0" right="40.0" top="40.0" />
-               </HBox.margin>
-            </Button>
-         </children>
-         <BorderPane.margin>
-            <Insets />
-         </BorderPane.margin>
-      </HBox>
-   </bottom>
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
@@ -65,7 +36,7 @@
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </Label>
-            <TextArea prefHeight="96.0" prefWidth="760.0">
+            <TextArea prefHeight="96.0" prefWidth="760.0" fx:id="questionArea">
                <VBox.margin>
                   <Insets left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
@@ -122,22 +93,22 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField GridPane.columnIndex="1">
+                  <TextField GridPane.columnIndex="1" fx:id="answerAField">
                      <GridPane.margin>
                         <Insets left="10.0" right="10.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="answerBField">
                      <GridPane.margin>
                         <Insets left="10.0" right="10.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="answerCField">
                      <GridPane.margin>
                         <Insets left="10.0" right="10.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" fx:id="answerDField">
                      <GridPane.margin>
                         <Insets left="10.0" right="10.0" />
                      </GridPane.margin>
@@ -153,10 +124,39 @@
       </VBox>
    </center>
    <right>
-      <ListView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <ListView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" fx:id="listView">
          <BorderPane.margin>
             <Insets />
          </BorderPane.margin>
       </ListView>
    </right>
+   <bottom>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#switchToMainMenu" prefWidth="120.0" text="Back to Menu">
+               <HBox.margin>
+                  <Insets left="40.0" right="40.0" top="40.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" prefWidth="120.0" text="Add Question" onAction="#addQuestion">
+               <HBox.margin>
+                  <Insets left="40.0" right="40.0" top="40.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" prefWidth="120.0" text="Save Question" onAction="#saveQuestion">
+               <HBox.margin>
+                  <Insets left="40.0" right="40.0" top="40.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" prefWidth="120.0" text="Edit Question">
+               <HBox.margin>
+                  <Insets left="40.0" right="40.0" top="40.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </HBox>
+   </bottom>
 </BorderPane>

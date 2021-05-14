@@ -9,9 +9,21 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Question {
 
-    private String question;
+    private String questionText;
     private String answerA;
     private String answerB;
     private String answerC;
     private String answerD ;
+
+    public QuestionModel toModel(){
+
+        var model = new QuestionModel();
+        model.questionText.set(questionText);
+        model.answerA.set(answerA);
+        model.answerB.set(answerB);
+        model.answerC.set(answerC);
+        model.answerD.set(answerD);
+        return model;
+    }
+
 }

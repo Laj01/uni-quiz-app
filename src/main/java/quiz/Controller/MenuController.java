@@ -16,14 +16,6 @@ public class MenuController{
 
 
     @FXML
-    private void switchToMainMenu(ActionEvent event) throws IOException {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/MainMenu.fxml"));
-        stage.setScene(new Scene(root));
-        stage.show();
-    }
-
-    @FXML
     private void switchToQuizForm(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/QuizForm.fxml"));
