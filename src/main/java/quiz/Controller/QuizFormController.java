@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -36,16 +37,24 @@ public class QuizFormController {
     private TextField answerCField;
     @FXML
     private TextField answerDField;
+    @FXML
+    private Button addButton;
+    @FXML
+    private Button saveButton;
+
 
     private QuestionModel prevSelectedQuestion;
 
-
+    @FXML
     public void initialize() throws Exception{
 
         File file = new File("src/main/resources/custom.json");
         if(!file.exists()){
             return;
         }
+
+        addButton.setDisable(true);
+        saveButton.setDisable(true);
 
         var reader = new ObjectMapper();
         Quiz quiz = reader.readValue(file, Quiz.class);
@@ -78,6 +87,7 @@ public class QuizFormController {
 
         listView.getItems().add(question);
     }
+
     @FXML
     public void saveQuestion() throws IOException {
         List<Question> list = listView.getItems()
@@ -90,6 +100,7 @@ public class QuizFormController {
         writer.writeValue(new File("src/main/resources/custom.json"), new Quiz(list));
     }
 
+    @FXML
     public void editQuestion(){
         QuestionModel question = listView.getSelectionModel().getSelectedItem();
         if (question == null){
@@ -118,5 +129,18 @@ public class QuizFormController {
 
 
         prevSelectedQuestion = question;
+    }
+
+    @FXML
+    public void handleKeyReleased(){
+        String text1 = questionArea.getText().trim();
+        String text2 = answerAField.getText().trim();
+        String text3 = answerBField.getText().trim();
+        String text4 = answerCField.getText().trim();
+        String text5 = answerDField.getText().trim();
+
+        boolean disableButtons = text1.isEmpty() || text2.isEmpty() || text3.isEmpty() || text4.isEmpty() || text5.isEmpty();
+        addButton.setDisable(disableButtons);
+        saveButton.setDisable(disableButtons);
     }
 }
