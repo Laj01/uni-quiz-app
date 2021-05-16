@@ -42,10 +42,9 @@ public class QuizFormController {
     @FXML
     private Button saveButton;
 
-
     private QuestionModel prevSelectedQuestion;
 
-    @FXML
+
     public void initialize() throws Exception{
 
         File file = new File("src/main/resources/custom.json");

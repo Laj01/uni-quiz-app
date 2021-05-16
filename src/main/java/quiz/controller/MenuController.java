@@ -24,7 +24,7 @@ public class MenuController{
     @FXML
     private void switchToDefaultQuizGame(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/QuizSelecter.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/DefaultQuizGame.fxml"));
         stage.setScene(new Scene(root));
         stage.show();
     }
@@ -32,7 +32,7 @@ public class MenuController{
     @FXML
     private void switchToCustomQuizGame(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/QuizSelecter.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/CustomQuizGame.fxml"));
         stage.setScene(new Scene(root));
         stage.show();
     }
