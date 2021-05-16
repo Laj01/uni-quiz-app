@@ -1,4 +1,4 @@
-package quiz.Controller;
+package quiz.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class QuizGameController {
+public class QuizSelecterController {
 
     @FXML
     private void switchToMainMenu(ActionEvent event) throws IOException {
@@ -18,5 +18,15 @@ public class QuizGameController {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/MainMenu.fxml"));
         stage.setScene(new Scene(root));
         stage.show();
+    }
+
+    @FXML
+    private void selectDefaultJson() throws Exception{
+
+    }
+
+    @FXML
+    private void selectCustomJson() throws Exception{
+
     }
 }

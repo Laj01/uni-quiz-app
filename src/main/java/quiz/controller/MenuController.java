@@ -1,4 +1,4 @@
-package quiz.Controller;
+package quiz.controller;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;

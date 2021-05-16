@@ -6,17 +6,20 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.controller.QuizGameController">
+
+<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.controller.QuizSelecterController">
     <top>
         <Label text="New Quiz Game" BorderPane.alignment="CENTER">
             <font>
-                <Font name="Arial bold" size="40"/>
+                <Font name="Arial bold" size="40" />
             </font>
         </Label>
     </top>
     <center>
         <VBox alignment="CENTER" spacing="30">
-            <Button fx:id="switchToMainMenu" text="Back to main menu" onAction="#switchToMainMenu" prefWidth="120"/>
+         <Button fx:id="DefaultJson" onAction="#selectDefaultJson" prefWidth="120" text="Play default Quiz"/>
+         <Button fx:id="CustomJson" onAction="#selectCustomJson" prefWidth="120" text="Play custom Quiz"/>
+            <Button fx:id="switchToMainMenu" onAction="#switchToMainMenu" prefWidth="120" text="Back to main menu" />
         </VBox>
     </center>
     <padding>

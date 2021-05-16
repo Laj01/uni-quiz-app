@@ -1,4 +1,4 @@
-package quiz.Controller;
+package quiz.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -14,9 +14,9 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import quiz.Model.Question;
-import quiz.Model.QuestionModel;
-import quiz.Model.Quiz;
+import quiz.model.Question;
+import quiz.model.QuestionModel;
+import quiz.model.Quiz;
 
 import java.io.File;
 import java.io.IOException;

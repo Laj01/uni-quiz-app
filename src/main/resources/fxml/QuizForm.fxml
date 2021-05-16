@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.Controller.QuizFormController">
+<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.controller.QuizFormController">
     <top>
         <Label text="New Quiz Form" BorderPane.alignment="CENTER">
             <font>
@@ -27,100 +27,104 @@
     </padding>
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label contentDisplay="TOP" prefHeight="17.0" prefWidth="269.0" text="Enter your question here:" textAlignment="CENTER">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="10.0" top="10.0" />
-               </VBox.margin>
-            </Label>
-            <TextArea prefHeight="96.0" prefWidth="760.0" fx:id="questionArea" onKeyReleased="#handleKeyReleased">
-               <VBox.margin>
-                  <Insets left="10.0" right="10.0" top="10.0" />
-               </VBox.margin>
-            </TextArea>
-            <Label contentDisplay="TOP" prefHeight="17.0" prefWidth="269.0" text="Enter your answers here: *" textAlignment="CENTER">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="10.0" top="10.0" />
-               </VBox.margin>
-            </Label>
-            <GridPane prefHeight="154.0" prefWidth="560.0">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="280.0" minWidth="10.0" prefWidth="280.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="280.0" minWidth="10.0" prefWidth="280.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Label text="Answer 1 (Correct answer):">
-                     <GridPane.margin>
-                        <Insets left="20.0" />
-                     </GridPane.margin>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Label text="Answer 2 (Fake answer):" GridPane.rowIndex="1">
-                     <GridPane.margin>
-                        <Insets left="20.0" />
-                     </GridPane.margin>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Label text="Answer 3 (Fake answer):" GridPane.rowIndex="2">
-                     <GridPane.margin>
-                        <Insets left="20.0" />
-                     </GridPane.margin>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Label text="Answer 4 (Fake answer):" GridPane.rowIndex="3">
-                     <GridPane.margin>
-                        <Insets left="20.0" />
-                     </GridPane.margin>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <TextField GridPane.columnIndex="1" fx:id="answerAField" onKeyReleased="#handleKeyReleased">
-                     <GridPane.margin>
-                        <Insets left="10.0" right="10.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="answerBField" onKeyReleased="#handleKeyReleased">
-                     <GridPane.margin>
-                        <Insets left="10.0" right="10.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="answerCField" onKeyReleased="#handleKeyReleased">
-                     <GridPane.margin>
-                        <Insets left="10.0" right="10.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" fx:id="answerDField" onKeyReleased="#handleKeyReleased">
-                     <GridPane.margin>
-                        <Insets left="10.0" right="10.0" />
-                     </GridPane.margin>
-                  </TextField>
-               </children>
-            </GridPane>
-            <Label alignment="CENTER" prefHeight="23.0" prefWidth="291.0" text="* Hint: The answers will be re-shuffled in the Quiz. ">
-               <VBox.margin>
-                  <Insets top="50.0" />
-               </VBox.margin>
-            </Label>
-         </children>
+         <Label contentDisplay="TOP" prefHeight="17.0" prefWidth="269.0" text="Enter your question here:"
+                textAlignment="CENTER">
+            <font>
+               <Font size="14.0"/>
+            </font>
+            <VBox.margin>
+               <Insets bottom="10.0" top="10.0"/>
+            </VBox.margin>
+         </Label>
+         <TextArea prefHeight="96.0" prefWidth="760.0" fx:id="questionArea" onKeyReleased="#handleKeyReleased">
+            <VBox.margin>
+               <Insets left="10.0" right="10.0" top="10.0"/>
+            </VBox.margin>
+         </TextArea>
+         <Label contentDisplay="TOP" prefHeight="17.0" prefWidth="269.0" text="Enter your answers here: *"
+                textAlignment="CENTER">
+            <font>
+               <Font size="14.0"/>
+            </font>
+            <VBox.margin>
+               <Insets bottom="10.0" top="10.0"/>
+            </VBox.margin>
+         </Label>
+         <GridPane prefHeight="154.0" prefWidth="560.0">
+            <columnConstraints>
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="280.0" minWidth="10.0" prefWidth="280.0"/>
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="280.0" minWidth="10.0" prefWidth="280.0"/>
+            </columnConstraints>
+            <rowConstraints>
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <children>
+               <Label text="Answer 1 (Correct answer):">
+                  <GridPane.margin>
+                     <Insets left="20.0"/>
+                  </GridPane.margin>
+                  <font>
+                     <Font size="14.0"/>
+                  </font>
+               </Label>
+               <Label text="Answer 2 (Fake answer):" GridPane.rowIndex="1">
+                  <GridPane.margin>
+                     <Insets left="20.0"/>
+                  </GridPane.margin>
+                  <font>
+                     <Font size="14.0"/>
+                  </font>
+               </Label>
+               <Label text="Answer 3 (Fake answer):" GridPane.rowIndex="2">
+                  <GridPane.margin>
+                     <Insets left="20.0"/>
+                  </GridPane.margin>
+                  <font>
+                     <Font size="14.0"/>
+                  </font>
+               </Label>
+               <Label text="Answer 4 (Fake answer):" GridPane.rowIndex="3">
+                  <GridPane.margin>
+                     <Insets left="20.0"/>
+                  </GridPane.margin>
+                  <font>
+                     <Font size="14.0"/>
+                  </font>
+               </Label>
+               <TextField GridPane.columnIndex="1" fx:id="answerAField" onKeyReleased="#handleKeyReleased">
+                  <GridPane.margin>
+                     <Insets left="10.0" right="10.0"/>
+                  </GridPane.margin>
+               </TextField>
+               <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="answerBField"
+                          onKeyReleased="#handleKeyReleased">
+                  <GridPane.margin>
+                     <Insets left="10.0" right="10.0"/>
+                  </GridPane.margin>
+               </TextField>
+               <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="answerCField"
+                          onKeyReleased="#handleKeyReleased">
+                  <GridPane.margin>
+                     <Insets left="10.0" right="10.0"/>
+                  </GridPane.margin>
+               </TextField>
+               <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" fx:id="answerDField"
+                          onKeyReleased="#handleKeyReleased">
+                  <GridPane.margin>
+                     <Insets left="10.0" right="10.0"/>
+                  </GridPane.margin>
+               </TextField>
+            </children>
+         </GridPane>
+         <Label alignment="CENTER" prefHeight="23.0" prefWidth="291.0"
+                text="* Hint: The answers will be re-shuffled in the Quiz. ">
+            <VBox.margin>
+               <Insets top="50.0"/>
+            </VBox.margin>
+         </Label>
       </VBox>
    </center>
    <right>
@@ -132,31 +136,33 @@
    </right>
    <bottom>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button mnemonicParsing="false" prefWidth="120.0" fx:id="backButton" text="Back to Menu" onAction="#switchToMainMenu">
-               <HBox.margin>
-                  <Insets left="40.0" right="40.0" top="40.0" />
-               </HBox.margin>
-            </Button>
-            <Button mnemonicParsing="false" prefWidth="120.0" fx:id="addButton" text="Add Question" onAction="#addQuestion">
-               <HBox.margin>
-                  <Insets left="40.0" right="40.0" top="40.0" />
-               </HBox.margin>
-            </Button>
-            <Button mnemonicParsing="false" prefWidth="120.0" fx:id="saveButton" text="Save Question" onAction="#saveQuestion">
-               <HBox.margin>
-                  <Insets left="40.0" right="40.0" top="40.0" />
-               </HBox.margin>
-            </Button>
-            <Button mnemonicParsing="false" prefWidth="120.0" fx:id="editButton" text="Edit Question" onAction="#editQuestion">
-               <HBox.margin>
-                  <Insets left="40.0" right="40.0" top="40.0" />
-               </HBox.margin>
-            </Button>
-         </children>
          <BorderPane.margin>
-            <Insets />
+            <Insets/>
          </BorderPane.margin>
+         <Button mnemonicParsing="false" prefWidth="120.0" fx:id="backButton" text="Back to Menu"
+                 onAction="#switchToMainMenu">
+            <HBox.margin>
+               <Insets left="40.0" right="40.0" top="40.0"/>
+            </HBox.margin>
+         </Button>
+         <Button mnemonicParsing="false" prefWidth="120.0" fx:id="addButton" text="Add Question"
+                 onAction="#addQuestion">
+            <HBox.margin>
+               <Insets left="40.0" right="40.0" top="40.0"/>
+            </HBox.margin>
+         </Button>
+         <Button mnemonicParsing="false" prefWidth="120.0" fx:id="saveButton" text="Save Question"
+                 onAction="#saveQuestion">
+            <HBox.margin>
+               <Insets left="40.0" right="40.0" top="40.0"/>
+            </HBox.margin>
+         </Button>
+         <Button mnemonicParsing="false" prefWidth="120.0" fx:id="editButton" text="Edit Question"
+                 onAction="#editQuestion">
+            <HBox.margin>
+               <Insets left="40.0" right="40.0" top="40.0"/>
+            </HBox.margin>
+         </Button>
       </HBox>
    </bottom>
 </BorderPane>
