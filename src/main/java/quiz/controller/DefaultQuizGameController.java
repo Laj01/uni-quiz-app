@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class QuizSelecterController {
+public class DefaultQuizGameController {
 
     @FXML
     private void switchToMainMenu(ActionEvent event) throws IOException {
@@ -20,13 +20,5 @@ public class QuizSelecterController {
         stage.show();
     }
 
-    @FXML
-    private void selectDefaultJson() throws Exception{
 
-    }
-
-    @FXML
-    private void selectCustomJson() throws Exception{
-
-    }
 }

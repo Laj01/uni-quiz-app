@@ -13,8 +13,6 @@ import java.io.IOException;
 
 public class MenuController{
 
-
-
     @FXML
     private void switchToQuizForm(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -24,9 +22,17 @@ public class MenuController{
     }
 
     @FXML
-    private void switchToQuizGame(ActionEvent event) throws IOException {
+    private void switchToDefaultQuizGame(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/QuizGame.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/QuizSelecter.fxml"));
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
+    @FXML
+    private void switchToCustomQuizGame(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/QuizSelecter.fxml"));
         stage.setScene(new Scene(root));
         stage.show();
     }

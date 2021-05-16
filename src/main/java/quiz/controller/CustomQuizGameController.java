@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class QuizGameController {
+public class CustomQuizGameController {
 
     @FXML
     private void switchToMainMenu(ActionEvent event) throws IOException {
@@ -19,4 +19,6 @@ public class QuizGameController {
         stage.setScene(new Scene(root));
         stage.show();
     }
+
+
 }
