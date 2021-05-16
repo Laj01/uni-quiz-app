@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -37,22 +38,22 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="buttonA" contentDisplay="CENTER" prefWidth="150" text="" textAlignment="CENTER">
+                  <Button fx:id="buttonA" contentDisplay="CENTER" onAction="#checkForValidAnswer" prefWidth="150" text="" textAlignment="CENTER">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="buttonB" contentDisplay="CENTER" prefWidth="150" text="" textAlignment="CENTER" GridPane.columnIndex="1">
+                  <Button fx:id="buttonB" contentDisplay="CENTER" onAction="#checkForValidAnswer" prefWidth="150" text="" textAlignment="CENTER" GridPane.columnIndex="1">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="buttonC" contentDisplay="CENTER" prefWidth="150" text="" textAlignment="CENTER" GridPane.rowIndex="2">
+                  <Button fx:id="buttonC" contentDisplay="CENTER" onAction="#checkForValidAnswer" prefWidth="150" text="" textAlignment="CENTER" GridPane.rowIndex="2">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="buttonD" contentDisplay="CENTER" prefWidth="150" text="" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Button fx:id="buttonD" contentDisplay="CENTER" onAction="#checkForValidAnswer" prefWidth="150" text="" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
@@ -66,6 +67,11 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
    <bottom>
-         <Button fx:id="switchToMainMenu" onAction="#switchToMainMenu" prefWidth="120" text="Back to main menu" BorderPane.alignment="CENTER" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="120.0" BorderPane.alignment="CENTER">
+         <children>
+               <Button fx:id="switchToMainMenu" onAction="#switchToMainMenu" prefWidth="120" text="Back to main menu" />
+            <Button fx:id="restartQuiz" onAction="#initialize" prefWidth="120" text="Restart quiz" />
+         </children>
+      </HBox>
    </bottom>
 </BorderPane>

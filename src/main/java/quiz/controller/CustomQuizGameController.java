@@ -1,28 +1,25 @@
 package quiz.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Pane;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import quiz.model.Question;
-import quiz.model.QuestionModel;
 import quiz.model.Quiz;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.SQLOutput;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 public class CustomQuizGameController {
 
@@ -36,26 +33,61 @@ public class CustomQuizGameController {
     private Button buttonC;
     @FXML
     private Button buttonD;
-    private  String questionDisplay;
-    private int index = 0;
 
-    public void initialize() throws Exception{
+    private int index;
+
+    private List<Question> questions;
+
+
+    public void initialize() throws Exception {
 
         File file = new File("src/main/resources/custom.json");
         ObjectMapper objectMapper = new ObjectMapper();
-        Quiz quiz= objectMapper.readValue(file, Quiz.class);
-        List<Question> questions= quiz.getQuestions();
-
-        questionLabel.setText(questions.get(index).getQuestionText());
-        buttonA.setText(questions.get(index).getAnswerA());
-        buttonB.setText(questions.get(index).getAnswerB());
-        buttonC.setText(questions.get(index).getAnswerC());
-        buttonD.setText(questions.get(index).getAnswerD());
+        Quiz quiz = objectMapper.readValue(file, Quiz.class);
+        questions = quiz.getQuestions();
+        index = 0;
+        setQuestion();
     }
 
     @FXML
-    public void checkForValid(){
+    private void setQuestion() {
+        questionLabel.setText(questions.get(index).getQuestionText());
 
+        ArrayList<String> originalAnswerList = new ArrayList<>();
+        originalAnswerList.add(questions.get(index).getAnswerA());
+        originalAnswerList.add(questions.get(index).getAnswerB());
+        originalAnswerList.add(questions.get(index).getAnswerC());
+        originalAnswerList.add(questions.get(index).getAnswerD());
+        Collections.shuffle(originalAnswerList);
+
+        buttonA.setText(originalAnswerList.get(0));
+        buttonB.setText(originalAnswerList.get(1));
+        buttonC.setText(originalAnswerList.get(2));
+        buttonD.setText(originalAnswerList.get(3));
+    }
+
+
+    @FXML
+    private void checkForValidAnswer(ActionEvent event) throws Exception {
+        Button answerButton = (Button) event.getTarget();
+
+        if (questions.get(index).getAnswerA().equals(answerButton.getText()) && questions.size() >= index+2) {
+            index += 1;
+            setQuestion();
+        } else {
+            initialize();
+            alert();
+        }
+    }
+
+
+    @FXML
+    private void alert() {
+        Alert a = new Alert(Alert.AlertType.INFORMATION);
+        a.setTitle("Quiz EOF");
+        a.setHeaderText("The quiz have ended");
+        a.setContentText("You answered " + index + "questions correctly. \nThe quiz now restarts");
+        a.showAndWait();
     }
 
     @FXML
@@ -65,6 +97,5 @@ public class CustomQuizGameController {
         stage.setScene(new Scene(root));
         stage.show();
     }
-
 
 }
