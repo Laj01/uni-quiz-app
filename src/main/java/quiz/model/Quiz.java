@@ -10,6 +10,5 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 public class Quiz {
-
     private List<Question> questions;
 }

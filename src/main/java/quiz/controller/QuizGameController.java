@@ -13,7 +13,6 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import quiz.model.Question;
 import quiz.model.Quiz;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,7 +20,7 @@ import java.util.Collections;
 import java.util.List;
 
 
-public class CustomQuizGameController {
+public class QuizGameController {
 
     @FXML
     private Label questionLabel;
@@ -33,24 +32,36 @@ public class CustomQuizGameController {
     private Button buttonC;
     @FXML
     private Button buttonD;
-
     private int index;
-
     private List<Question> questions;
+    private File file = new File("src/main/resources/default.json");;
 
 
+    @FXML
+    private void loadDefaultFile() throws Exception {
+        file = new File("src/main/resources/default.json");
+        initialize();
+    }
+
+    @FXML
+    private void loadCustomFile() throws Exception {
+        file = new File("src/main/resources/custom.json");
+        initialize();
+    }
+
+
+    @FXML
     public void initialize() throws Exception {
-
-        File file = new File("src/main/resources/custom.json");
         ObjectMapper objectMapper = new ObjectMapper();
         Quiz quiz = objectMapper.readValue(file, Quiz.class);
         questions = quiz.getQuestions();
         index = 0;
-        setQuestion();
+        showQuestion();
     }
 
+
     @FXML
-    private void setQuestion() {
+    private void showQuestion() {
         questionLabel.setText(questions.get(index).getQuestionText());
 
         ArrayList<String> originalAnswerList = new ArrayList<>();
@@ -66,27 +77,25 @@ public class CustomQuizGameController {
         buttonD.setText(originalAnswerList.get(3));
     }
 
-
     @FXML
     private void checkForValidAnswer(ActionEvent event) throws Exception {
         Button answerButton = (Button) event.getTarget();
 
         if (questions.get(index).getAnswerA().equals(answerButton.getText()) && questions.size() >= index+2) {
             index += 1;
-            setQuestion();
+            showQuestion();
         } else {
             initialize();
             alert();
         }
     }
 
-
     @FXML
     private void alert() {
         Alert a = new Alert(Alert.AlertType.INFORMATION);
         a.setTitle("Quiz EOF");
-        a.setHeaderText("The quiz have ended");
-        a.setContentText("You answered " + index + "questions correctly. \nThe quiz now restarts");
+        a.setHeaderText("");
+        a.setContentText("You answered " + index + " questions correctly. \nThe quiz now restarts.");
         a.showAndWait();
     }
 

@@ -41,12 +41,10 @@ public class QuizFormController {
     private Button addButton;
     @FXML
     private Button saveButton;
-
     private QuestionModel prevSelectedQuestion;
 
 
     public void initialize() throws Exception{
-
         File file = new File("src/main/resources/custom.json");
         if(!file.exists()){
             return;

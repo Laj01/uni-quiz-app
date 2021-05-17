@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Question {
-
     private String questionText;
     private String answerA;
     private String answerB;
@@ -16,7 +15,6 @@ public class Question {
     private String answerD ;
 
     public QuestionModel toModel(){
-
         var model = new QuestionModel();
         model.questionText.set(questionText);
         model.answerA.set(answerA);

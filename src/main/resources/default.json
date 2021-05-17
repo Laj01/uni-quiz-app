@@ -13,33 +13,33 @@
     "answerD" : "Paprika"
   }, {
     "questionText" : "3+3",
-    "answerA" : "8",
+    "answerA" : "6",
     "answerB" : "7",
     "answerC" : "6",
     "answerD" : "5"
   }, {
     "questionText" : "120",
-    "answerA" : "1",
+    "answerA" : "120",
     "answerB" : "2",
-    "answerC" : "120",
+    "answerC" : "1",
     "answerD" : "5"
   }, {
     "questionText" : "9????",
-    "answerA" : "22",
-    "answerB" : "9",
+    "answerA" : "9",
+    "answerB" : "22",
     "answerC" : "44",
     "answerD" : "44"
   }, {
     "questionText" : "A?????",
-    "answerA" : "s",
+    "answerA" : "A",
     "answerB" : "d",
-    "answerC" : "A",
+    "answerC" : "s",
     "answerD" : "f"
   }, {
     "questionText" : "as?????????",
-    "answerA" : "dddd",
+    "answerA" : "as",
     "answerB" : "as",
-    "answerC" : "vvvv",
-    "answerD" : "vvvv"
+    "answerC" : "as",
+    "answerD" : "as"
   } ]
 }
