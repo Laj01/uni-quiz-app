@@ -30,12 +30,6 @@
     "answerC" : "3",
     "answerD" : "4"
   }, {
-    "questionText" : "1",
-    "answerA" : "1",
-    "answerB" : "2",
-    "answerC" : "3",
-    "answerD" : "4"
-  }, {
     "questionText" : "99999999999",
     "answerA" : "9999999999999",
     "answerB" : "2",

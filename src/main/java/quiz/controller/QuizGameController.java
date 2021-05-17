@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 public class QuizGameController {
@@ -32,7 +33,10 @@ public class QuizGameController {
     private Button buttonC;
     @FXML
     private Button buttonD;
+    @FXML
+    private Label NumberOfQuestions;
     private int index;
+    private int correctAnswers;
     private List<Question> questions;
     private File file = new File("src/main/resources/default.json");
 
@@ -56,7 +60,9 @@ public class QuizGameController {
         Quiz quiz = objectMapper.readValue(file, Quiz.class);
         questions = quiz.getQuestions();
         index = 0;
+        correctAnswers = 0;
         showQuestion();
+        NumberOfQuestions.setText("There are "+ questions.size() + " questions in this Quiz.");
     }
 
 
@@ -80,6 +86,7 @@ public class QuizGameController {
     @FXML
     private void checkForValidAnswer(ActionEvent event) throws Exception {
         Button answerButton = (Button) event.getTarget();
+        correctAnswers++;
         if (questions.get(index).getAnswerA().equals(answerButton.getText()) && questions.size() >= index+2) {
             index++;
             showQuestion();
@@ -93,8 +100,8 @@ public class QuizGameController {
     private void alert() {
         Alert a = new Alert(Alert.AlertType.INFORMATION);
         a.setTitle("Quiz EOF");
-        a.setHeaderText("The Quiz is now over.");
-        a.setContentText("You answered " + index + " questions correctly. \nThe quiz now restarts.");
+        a.setHeaderText("The Quiz is over.\nYou reached Question No." + correctAnswers + "!\nCongratulations!");
+        a.setContentText("The quiz now restarts.");
         a.showAndWait();
     }
 
