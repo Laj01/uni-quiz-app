@@ -17,13 +17,17 @@ import javafx.stage.Stage;
 import quiz.model.Question;
 import quiz.model.QuestionModel;
 import quiz.model.Quiz;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * This controller of the application is responsible for creating a custom quiz.
+ *
+ * The custom.json is built from the user input.
+ */
 public class QuizFormController {
 
     @FXML
@@ -42,16 +46,19 @@ public class QuizFormController {
     private Button addButton;
     @FXML
     private Button saveButton;
-
     private QuestionModel prevSelectedQuestion;
 
 
+    /**
+     * Sets the starting state of this scene.
+     *
+     * Reads the content of the json file into a {@code Quiz} object.
+     * Then displays the questions on the {@code listView} of the scene.
+     * Sets {@code addButton} and {@code saveButton} buttons to un-clickable.
+     * @throws IOException if it cannot find the json file.
+     */
     public void initialize() throws Exception{
         InputStream form = getClass().getClassLoader().getResourceAsStream("custom.json");
-
-        addButton.setDisable(true);
-        saveButton.setDisable(true);
-
         var reader = new ObjectMapper();
         Quiz quiz = reader.readValue(form, Quiz.class);
 
@@ -59,11 +66,16 @@ public class QuizFormController {
                 .stream()
                 .map(Question::toModel)
                 .collect(Collectors.toList());
-
         listView.setItems(FXCollections.observableArrayList(modelList));
-
+        addButton.setDisable(true);
+        saveButton.setDisable(true);
     }
 
+    /**
+     * Switches to the MainMenu scene.
+     * @param event The {@code ActionEvent}, on which this function is called.
+     * @throws IOException if it cannot find the fxml file.
+     */
     @FXML
     private void switchToMainMenu(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -72,6 +84,10 @@ public class QuizFormController {
         stage.show();
     }
 
+    /**
+     * Adds the user input from the {@code TextArea} and 4 {@code TextField} into a {@code QuestionModel}.
+     * Then displays the added {@code questionText} on the {@code listView}.
+     */
     @FXML
     public void addQuestion(){
         QuestionModel question = new QuestionModel();
@@ -84,8 +100,16 @@ public class QuizFormController {
         listView.getItems().add(question);
     }
 
+    /**
+     * Saves the content of {@code listView} into custom.json.
+     *
+     * Cheater Andy used absolute filepath instead of relative, because he couldn't solve the problem.
+     * @throws IOException if it cannot load the json file.
+     * @throws com.fasterxml.jackson.core.JsonGenerationException if it writes json in the wrong context.
+     * @throws com.fasterxml.jackson.databind if it cannot construct instance of the class.
+     */
     @FXML
-    public void saveQuestion() throws IOException {
+    public void saveQuestion() throws Exception{
         List<Question> list = listView.getItems()
                 .stream()
                 .map(QuestionModel::toData)
@@ -93,9 +117,13 @@ public class QuizFormController {
 
         var writer = new ObjectMapper();
         writer.enable(SerializationFeature.INDENT_OUTPUT);
-        writer.writeValue(new File("src/main/resources/custom.json"), new Quiz(list));
+        writer.writeValue(new File("target/classes/custom.json"), new Quiz(list));
     }
 
+    /**
+     * Reads the content of {@code QuestionModel} back to the {@code TextArea} and {@code TextField}.
+     * Making them modifiable again in the process.
+     */
     @FXML
     public void editQuestion(){
         QuestionModel question = listView.getSelectionModel().getSelectedItem();
@@ -110,7 +138,6 @@ public class QuizFormController {
             prevSelectedQuestion.answerC.unbind();
             prevSelectedQuestion.answerD.unbind();
         }
-
         questionArea.setText(question.questionText.getValue());
         answerAField.setText(question.answerA.getValue());
         answerBField.setText(question.answerB.getValue());
@@ -122,11 +149,14 @@ public class QuizFormController {
         question.answerB.bind(answerBField.textProperty());
         question.answerC.bind(answerCField.textProperty());
         question.answerD.bind(answerDField.textProperty());
-
-
         prevSelectedQuestion = question;
     }
 
+    /**
+     * Monitoring the {@code TextArea} and 4 {@code TextField} for content.
+     * Keeps the {@code addButton} and {@code saveButton} un-clickable until all the
+     * areas are filled with text.
+     */
     @FXML
     public void handleKeyReleased(){
         String text1 = questionArea.getText().trim();
