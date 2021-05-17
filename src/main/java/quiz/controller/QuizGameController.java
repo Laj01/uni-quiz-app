@@ -13,12 +13,11 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import quiz.model.Question;
 import quiz.model.Quiz;
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 
 public class QuizGameController {
@@ -38,18 +37,18 @@ public class QuizGameController {
     private int index;
     private int correctAnswers;
     private List<Question> questions;
-    private File file = new File("src/main/resources/default.json");
+    private InputStream form = getClass().getClassLoader().getResourceAsStream("default.json");
 
 
     @FXML
     private void loadDefaultFile() throws Exception {
-        file = new File("src/main/resources/default.json");
+        form = getClass().getClassLoader().getResourceAsStream("default.json");
         initialize();
     }
 
     @FXML
     private void loadCustomFile() throws Exception {
-        file = new File("src/main/resources/custom.json");
+        form = getClass().getClassLoader().getResourceAsStream("custom.json");
         initialize();
     }
 
@@ -57,7 +56,7 @@ public class QuizGameController {
     @FXML
     public void initialize() throws Exception {
         ObjectMapper objectMapper = new ObjectMapper();
-        Quiz quiz = objectMapper.readValue(file, Quiz.class);
+        Quiz quiz = objectMapper.readValue(form, Quiz.class);
         questions = quiz.getQuestions();
         index = 0;
         correctAnswers = 0;
@@ -92,7 +91,7 @@ public class QuizGameController {
             showQuestion();
         } else {
             alert();
-            initialize();
+            loadDefaultFile();
         }
     }
 
@@ -112,5 +111,4 @@ public class QuizGameController {
         stage.setScene(new Scene(root));
         stage.show();
     }
-
 }

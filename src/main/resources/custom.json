@@ -1,16 +1,10 @@
 {
   "questions" : [ {
     "questionText" : "Első kérdés",
-    "answerA" : "1",
-    "answerB" : "2",
-    "answerC" : "3",
-    "answerD" : "4"
-  }, {
-    "questionText" : "1",
-    "answerA" : "1",
-    "answerB" : "2",
-    "answerC" : "3",
-    "answerD" : "4"
+    "answerA" : "Helyes válasz",
+    "answerB" : "Rossz válasz1",
+    "answerC" : "Rossz válasz2",
+    "answerD" : "Rossz válasz2"
   }, {
     "questionText" : "1",
     "answerA" : "1",
@@ -18,22 +12,10 @@
     "answerC" : "3",
     "answerD" : "3"
   }, {
-    "questionText" : "1",
-    "answerA" : "1",
+    "questionText" : "2",
+    "answerA" : "2",
     "answerB" : "2",
     "answerC" : "2",
-    "answerD" : "3"
-  }, {
-    "questionText" : "1",
-    "answerA" : "1",
-    "answerB" : "2",
-    "answerC" : "3",
-    "answerD" : "4"
-  }, {
-    "questionText" : "99999999999",
-    "answerA" : "9999999999999",
-    "answerB" : "2",
-    "answerC" : "3",
-    "answerD" : "4"
+    "answerD" : "2"
   } ]
 }

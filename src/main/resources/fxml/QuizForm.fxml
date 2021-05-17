@@ -139,7 +139,7 @@
          <BorderPane.margin>
             <Insets/>
          </BorderPane.margin>
-         <Button mnemonicParsing="false" prefWidth="120.0" fx:id="backButton" text="Back to Menu"
+         <Button mnemonicParsing="false" prefWidth="120.0" text="Back to Menu"
                  onAction="#switchToMainMenu">
             <HBox.margin>
                <Insets left="40.0" right="40.0" top="40.0"/>
@@ -157,7 +157,7 @@
                <Insets left="40.0" right="40.0" top="40.0"/>
             </HBox.margin>
          </Button>
-         <Button mnemonicParsing="false" prefWidth="120.0" fx:id="editButton" text="Edit Question"
+         <Button mnemonicParsing="false" prefWidth="120.0" text="Edit Question"
                  onAction="#editQuestion">
             <HBox.margin>
                <Insets left="40.0" right="40.0" top="40.0"/>

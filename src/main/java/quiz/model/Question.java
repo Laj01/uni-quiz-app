@@ -23,5 +23,4 @@ public class Question {
         model.answerD.set(answerD);
         return model;
     }
-
 }

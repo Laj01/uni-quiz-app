@@ -20,6 +20,7 @@ import quiz.model.Quiz;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,20 +42,19 @@ public class QuizFormController {
     private Button addButton;
     @FXML
     private Button saveButton;
+
     private QuestionModel prevSelectedQuestion;
 
 
     public void initialize() throws Exception{
-        File file = new File("src/main/resources/custom.json");
-        if(!file.exists()){
-            return;
-        }
+        InputStream form = Quiz.class.getClassLoader().getResourceAsStream("custom.json");
+
 
         addButton.setDisable(true);
         saveButton.setDisable(true);
 
         var reader = new ObjectMapper();
-        Quiz quiz = reader.readValue(file, Quiz.class);
+        Quiz quiz = reader.readValue(form, Quiz.class);
 
         List<QuestionModel> modelList = quiz.getQuestions()
                 .stream()

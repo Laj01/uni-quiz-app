@@ -64,10 +64,9 @@
     </padding>
    <bottom>
        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="80.0" BorderPane.alignment="CENTER">
-           <Button fx:id="switchToMainMenu" onAction="#switchToMainMenu" prefWidth="120" text="Back to main menu" />
-           <Button fx:id="restartQuiz" onAction="#initialize" prefWidth="120" text="Restart quiz" />
-           <Button fx:id="loadDefault" layoutX="450.0" layoutY="48.0" onAction="#loadDefaultFile" prefWidth="120" text="Load Default Quiz" />
-           <Button fx:id="loadCustom" layoutX="570.0" layoutY="48.0" onAction="#loadCustomFile" prefWidth="120" text="Load Custom Quiz" />
+           <Button onAction="#switchToMainMenu" prefWidth="120" text="Back to main menu" />
+           <Button layoutX="450.0" layoutY="48.0" onAction="#loadDefaultFile" prefWidth="120" text="Load Default Quiz" />
+           <Button layoutX="570.0" layoutY="48.0" onAction="#loadCustomFile" prefWidth="120" text="Load Custom Quiz" />
        </HBox>
    </bottom>
 </BorderPane>
