@@ -12,7 +12,7 @@ public class Question {
     private String answerA;
     private String answerB;
     private String answerC;
-    private String answerD ;
+    private String answerD;
 
     public QuestionModel toModel(){
         var model = new QuestionModel();

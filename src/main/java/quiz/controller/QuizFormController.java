@@ -47,8 +47,7 @@ public class QuizFormController {
 
 
     public void initialize() throws Exception{
-        InputStream form = Quiz.class.getClassLoader().getResourceAsStream("custom.json");
-
+        InputStream form = getClass().getClassLoader().getResourceAsStream("custom.json");
 
         addButton.setDisable(true);
         saveButton.setDisable(true);
