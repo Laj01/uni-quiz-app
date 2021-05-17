@@ -34,7 +34,7 @@ public class QuizGameController {
     private Button buttonD;
     private int index;
     private List<Question> questions;
-    private File file = new File("src/main/resources/default.json");;
+    private File file = new File("src/main/resources/default.json");
 
 
     @FXML
@@ -80,13 +80,12 @@ public class QuizGameController {
     @FXML
     private void checkForValidAnswer(ActionEvent event) throws Exception {
         Button answerButton = (Button) event.getTarget();
-
         if (questions.get(index).getAnswerA().equals(answerButton.getText()) && questions.size() >= index+2) {
-            index += 1;
+            index++;
             showQuestion();
         } else {
-            initialize();
             alert();
+            initialize();
         }
     }
 
@@ -94,7 +93,7 @@ public class QuizGameController {
     private void alert() {
         Alert a = new Alert(Alert.AlertType.INFORMATION);
         a.setTitle("Quiz EOF");
-        a.setHeaderText("");
+        a.setHeaderText("The Quiz is now over.");
         a.setContentText("You answered " + index + " questions correctly. \nThe quiz now restarts.");
         a.showAndWait();
     }

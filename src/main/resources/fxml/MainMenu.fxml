@@ -16,9 +16,9 @@
     </top>
     <center>
         <VBox alignment="CENTER" spacing="30">
-            <Button fx:id="switchToQuizGame" text="Play Quiz" onAction="#switchToQuizGame" prefWidth="120"/>
-            <Button fx:id="switchToQuizForm" text="Create Quiz" onAction="#switchToQuizForm" prefWidth="120"/>
-            <Button fx:id="handleExit" text="Exit" onAction="#handleExit" prefWidth="120"/>
+            <Button text="Play Quiz" onAction="#switchToQuizGame" prefWidth="120"/>
+            <Button text="Create Quiz" onAction="#switchToQuizForm" prefWidth="120"/>
+            <Button text="Exit" onAction="#handleExit" prefWidth="120"/>
         </VBox>
     </center>
     <padding>

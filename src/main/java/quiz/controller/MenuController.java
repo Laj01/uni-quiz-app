@@ -14,18 +14,17 @@ import java.io.IOException;
 public class MenuController{
 
     @FXML
-    private void switchToQuizForm(ActionEvent event) throws IOException {
+    private void switchToQuizGame(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/QuizForm.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/QuizGame.fxml"));
         stage.setScene(new Scene(root));
         stage.show();
     }
 
-
     @FXML
-    private void switchToQuizGame(ActionEvent event) throws IOException {
+    private void switchToQuizForm(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/QuizGame.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/QuizForm.fxml"));
         stage.setScene(new Scene(root));
         stage.show();
     }
