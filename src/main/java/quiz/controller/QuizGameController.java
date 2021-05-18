@@ -11,9 +11,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import org.tinylog.Logger;
 import quiz.model.Question;
 import quiz.model.Quiz;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -43,31 +43,38 @@ public class QuizGameController {
     private InputStream form = getClass().getClassLoader().getResourceAsStream("default.json");
 
     /**
-     * Reads default.json from the beginning.
-     * @throws Exception from {@code initialize()} if it cannot find the json file.
+     * Reads default.json from the start.
      */
     @FXML
-    private void loadDefaultFile() throws Exception {
-        form = getClass().getClassLoader().getResourceAsStream("default.json");
-        initialize();
+    private void loadDefaultFile() {
+        try{
+            form = getClass().getClassLoader().getResourceAsStream("default.json");
+            initialize();
+            Logger.info("default.json successfully loaded");
+        } catch (Exception e) {
+            Logger.error("Could not load default.json");
+        }
     }
 
     /**
-     * Reads custom.json from the beginning.
-     * @throws Exception from {@code initialize()} if it cannot find the json file.
+     * Reads custom.json from the start.
      */
     @FXML
-    private void loadCustomFile() throws Exception {
-        form = getClass().getClassLoader().getResourceAsStream("custom.json");
-        initialize();
+    private void loadCustomFile() {
+        try {
+            form = getClass().getClassLoader().getResourceAsStream("custom.json");
+            initialize();
+            Logger.info("custom.json successfully loaded");
+        } catch (Exception e){
+            Logger.error("Could not load custom.json");
+        }
     }
 
 
     /**
      * Sets the starting state of the quiz.
      *
-     * Reads the questions from the json and displays it on the screen with {@code showQuestion()} .
-     * @throws Exception if it cannot find the json file.
+     * Reads the questions from the json and displays it on the screen with {@code showQuestion()}.
      */
     @FXML
     public void initialize() throws Exception {
@@ -109,18 +116,19 @@ public class QuizGameController {
      * If the answer was correct, reads the next question in the json,
      * if not, stops the game with a pop-up window and starts a new quiz.
      * @param event The {@code ActionEvent}, on which this function is called.
-     * @throws Exception from {@code initialize()} if it cannot find the json file.
      */
     @FXML
-    private void checkForValidAnswer(ActionEvent event) throws Exception {
+    private void checkForValidAnswer(ActionEvent event) {
         Button answerButton = (Button) event.getTarget();
         correctAnswers++;
         if (questions.get(index).getAnswerA().equals(answerButton.getText()) && questions.size() >= index+2) {
             index++;
             showQuestion();
+            Logger.info("Correct answer");
         } else {
             alert();
             loadDefaultFile();
+            Logger.info("Wrong answer");
         }
     }
 
@@ -142,13 +150,17 @@ public class QuizGameController {
     /**
      * Switches to the MainMenu scene.
      * @param event The {@code ActionEvent}, on which this function is called.
-     * @throws IOException if it cannot find the fxml file.
      */
     @FXML
-    private void switchToMainMenu(ActionEvent event) throws IOException {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/MainMenu.fxml"));
-        stage.setScene(new Scene(root));
-        stage.show();
+    private void switchToMainMenu(ActionEvent event) {
+        try {
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/MainMenu.fxml"));
+            stage.setScene(new Scene(root));
+            stage.show();
+            Logger.info("MainMenu.fxml successfully loaded");
+        } catch (Exception e) {
+            Logger.error(new RuntimeException("FXML not found"), "Could not load MainMenu.fxml");
+        }
     }
 }

@@ -8,6 +8,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.tinylog.Logger;
+
 import java.io.IOException;
 
 /**
@@ -21,11 +23,16 @@ public class MainMenuController {
      * @throws IOException if it cannot find the fxml file.
      */
     @FXML
-    private void switchToQuizGame(ActionEvent event) throws IOException {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/QuizGame.fxml"));
-        stage.setScene(new Scene(root));
-        stage.show();
+    private void switchToQuizGame(ActionEvent event) {
+        try {
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/QuizGame.fxml"));
+            stage.setScene(new Scene(root));
+            stage.show();
+            Logger.info("QuizGame.fxml successfully loaded");
+        } catch (IOException e) {
+            Logger.error(new RuntimeException("FXML not found"), "Could not load QuizGame.fxml");
+        }
     }
 
     /**
@@ -34,11 +41,16 @@ public class MainMenuController {
      * @throws IOException if it cannot find the fxml file.
      */
     @FXML
-    private void switchToQuizForm(ActionEvent event) throws IOException {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/QuizForm.fxml"));
-        stage.setScene(new Scene(root));
-        stage.show();
+    private void switchToQuizForm(ActionEvent event) {
+        try {
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/QuizForm.fxml"));
+            stage.setScene(new Scene(root));
+            stage.show();
+            Logger.info("QuizForm.fxml successfully loaded");
+        } catch (IOException e) {
+            Logger.error(new RuntimeException("FXML not found"), "Could not load QuizForm.fxml");
+        }
     }
 
     /**
@@ -47,7 +59,7 @@ public class MainMenuController {
      */
     @FXML
     private void handleExit(ActionEvent event) {
-        System.out.println("Exiting...");
+        Logger.info("Exiting the application...");
         Platform.exit();
     }
 }

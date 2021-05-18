@@ -3,7 +3,7 @@ package quiz;
 import javafx.application.Application;
 
 /**
- * Main
+ * Main.
  */
 public class Main {
     /**
