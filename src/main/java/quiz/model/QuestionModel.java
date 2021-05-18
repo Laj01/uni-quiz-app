@@ -30,7 +30,7 @@ public class QuestionModel {
 
     /**
      * For displaying the content of the {@code questionText} in the {@code QuizFormController} scene.
-     * @return {@link String}
+     * @return {@code SimpleStringProperty} of {@code questionText} as {@link String}
      */
     @Override
     public String toString(){

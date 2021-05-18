@@ -110,7 +110,7 @@ public class QuizFormController {
     /**
      * Saves the content of {@code listView} into custom.json.
      *
-     * Cheater Andy used absolute filepath instead of relative, because he couldn't solve the problem.
+     * I used absolute filepath instead of relative, because I couldn't solve the problem.
      * @throws IOException if it cannot load the json file.
      */
     @FXML
