@@ -49,6 +49,7 @@ public class QuizFormController {
     @FXML
     private Button saveButton;
     private QuestionModel prevSelectedQuestion;
+    public final String currentDir = System.getProperty("user.dir");
 
 
     /**
@@ -60,7 +61,12 @@ public class QuizFormController {
      * @throws IOException if it cannot find the json file.
      */
     public void initialize() throws IOException {
-        InputStream form = getClass().getClassLoader().getResourceAsStream("custom.json");
+
+        //InputStream form = getClass().getClassLoader().getResourceAsStream("custom.json");
+        File form = new File(currentDir + "\\custom.json");
+        if(!form.exists()){
+            return;
+        }
         var reader = new ObjectMapper();
         Quiz quiz = reader.readValue(form, Quiz.class);
 
@@ -71,6 +77,7 @@ public class QuizFormController {
         listView.setItems(FXCollections.observableArrayList(modelList));
         addButton.setDisable(true);
         saveButton.setDisable(true);
+        System.out.println(currentDir);
     }
 
     /**
@@ -122,7 +129,7 @@ public class QuizFormController {
 
         var writer = new ObjectMapper();
         writer.enable(SerializationFeature.INDENT_OUTPUT);
-        writer.writeValue(new File("src/main/resources/custom.json"), new Quiz(list));
+        writer.writeValue(new File(currentDir + "\\custom.json"), new Quiz(list));
         Logger.info("Question saved");
     }
 

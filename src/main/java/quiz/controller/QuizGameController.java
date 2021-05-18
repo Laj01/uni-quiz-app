@@ -15,6 +15,8 @@ import org.tinylog.Logger;
 import quiz.model.Question;
 import quiz.model.Quiz;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -43,6 +45,20 @@ public class QuizGameController {
     private int correctAnswers;
     private List<Question> questions;
     private InputStream form = getClass().getClassLoader().getResourceAsStream("default.json");
+    public final String currentDir = System.getProperty("user.dir");
+
+
+    /**
+     * Converts the custom.json file into an {@code InputStream}.
+     *
+     * @return {@code InputStream} that contains the data from the custom quiz made by the user.
+     * @throws IOException if it cannot read from the json file.
+     */
+    private InputStream convertCustomToInputStream() throws Exception {
+        File initialFile = new File(currentDir + "\\custom.json");
+        form = new FileInputStream(initialFile);
+        return form;
+    }
 
     /**
      * Reads default.json from the start.
@@ -64,7 +80,7 @@ public class QuizGameController {
     @FXML
     private void loadCustomFile() {
         try {
-            form = getClass().getClassLoader().getResourceAsStream("custom.json");
+            convertCustomToInputStream();
             initialize();
             Logger.info("custom.json successfully loaded");
         } catch (Exception e){
