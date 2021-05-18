@@ -112,8 +112,6 @@ public class QuizFormController {
      *
      * Cheater Andy used absolute filepath instead of relative, because he couldn't solve the problem.
      * @throws IOException if it cannot load the json file.
-     * @throws com.fasterxml.jackson.core.JsonGenerationException if it writes json in the wrong context.
-     * @throws com.fasterxml.jackson.databind if it cannot construct instance of the class.
      */
     @FXML
     public void saveQuestion() throws Exception {

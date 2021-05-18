@@ -14,6 +14,8 @@ import javafx.stage.Stage;
 import org.tinylog.Logger;
 import quiz.model.Question;
 import quiz.model.Quiz;
+
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -75,6 +77,7 @@ public class QuizGameController {
      * Sets the starting state of the quiz.
      *
      * Reads the questions from the json and displays it on the screen with {@code showQuestion()}.
+     * @throws IOException if it cannot read from the json file.
      */
     @FXML
     public void initialize() throws Exception {

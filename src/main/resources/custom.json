@@ -1,33 +1,9 @@
 {
   "questions" : [ {
-    "questionText" : "Első kérdés",
-    "answerA" : "Helyes válasz",
-    "answerB" : "Rossz válasz1",
-    "answerC" : "Rossz válasz2",
-    "answerD" : "Rossz válasz2"
-  }, {
-    "questionText" : "1",
-    "answerA" : "1",
-    "answerB" : "2",
-    "answerC" : "3",
-    "answerD" : "3"
-  }, {
-    "questionText" : "2",
-    "answerA" : "2",
-    "answerB" : "3",
-    "answerC" : "4",
-    "answerD" : "4"
-  }, {
-    "questionText" : "11111111",
-    "answerA" : "1111111",
-    "answerB" : "222222",
-    "answerC" : "333333333",
-    "answerD" : "444444444"
-  }, {
-    "questionText" : "1111111",
-    "answerA" : "2222222",
-    "answerB" : "333333333",
-    "answerC" : "44444444",
-    "answerD" : "555555"
+    "questionText" : "Which one is Custom 1?",
+    "answerA" : "Custom 1",
+    "answerB" : "Apple",
+    "answerC" : "Peach",
+    "answerD" : "Paprika"
   } ]
 }
