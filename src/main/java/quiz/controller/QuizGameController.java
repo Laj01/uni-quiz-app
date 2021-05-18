@@ -51,7 +51,6 @@ public class QuizGameController {
     /**
      * Converts the custom.json file into an {@code InputStream}.
      *
-     * @return {@code InputStream} that contains the data from the custom quiz made by the user.
      * @throws IOException if it cannot read from the json file.
      */
     private void convertCustomToInputStream() throws Exception {
@@ -87,6 +86,13 @@ public class QuizGameController {
         }
     }
 
+    /**
+     * Resets the counters used. Displays additional information for the user.
+     */
+    private void setCounters(){
+        index = 0;
+        correctAnswers = 0;
+    }
 
     /**
      * Sets the starting state of the quiz.
@@ -99,8 +105,7 @@ public class QuizGameController {
         ObjectMapper objectMapper = new ObjectMapper();
         Quiz quiz = objectMapper.readValue(form, Quiz.class);
         questions = quiz.getQuestions();
-        index = 0;
-        correctAnswers = 0;
+        setCounters();
         showQuestion();
         NumberOfQuestions.setText("There are "+ questions.size() + " questions in this Quiz.");
     }

@@ -1,11 +1,9 @@
 package quiz.model;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-
 import java.util.Arrays;
-import java.util.List;
+
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,11 +17,6 @@ class QuizTest {
     void setUp(){
         this.quiz = new Quiz();
         quiz.setQuestions(Arrays.asList(TestQuestion1,TestQuestion2));
-    }
-
-    @Disabled
-    @Test
-    void getQuestions() {
     }
 
     @Test
