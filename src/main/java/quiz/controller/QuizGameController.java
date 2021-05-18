@@ -54,10 +54,9 @@ public class QuizGameController {
      * @return {@code InputStream} that contains the data from the custom quiz made by the user.
      * @throws IOException if it cannot read from the json file.
      */
-    private InputStream convertCustomToInputStream() throws Exception {
+    private void convertCustomToInputStream() throws Exception {
         File initialFile = new File(currentDir + "\\custom.json");
         form = new FileInputStream(initialFile);
-        return form;
     }
 
     /**

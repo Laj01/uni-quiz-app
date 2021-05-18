@@ -21,7 +21,6 @@ import quiz.model.Quiz;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -77,7 +76,6 @@ public class QuizFormController {
         listView.setItems(FXCollections.observableArrayList(modelList));
         addButton.setDisable(true);
         saveButton.setDisable(true);
-        System.out.println(currentDir);
     }
 
     /**

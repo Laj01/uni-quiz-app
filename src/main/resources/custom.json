@@ -1,9 +1,0 @@
-{
-  "questions" : [ {
-    "questionText" : "Which one is Custom 1?",
-    "answerA" : "Custom 1",
-    "answerB" : "Apple",
-    "answerC" : "Peach",
-    "answerD" : "Paprika"
-  } ]
-}
