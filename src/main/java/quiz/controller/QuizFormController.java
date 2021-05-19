@@ -2,6 +2,8 @@ package quiz.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.tinylog.Logger;
 import quiz.model.Question;
@@ -21,6 +24,8 @@ import quiz.model.Quiz;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -48,32 +53,14 @@ public class QuizFormController {
     @FXML
     private Button saveButton;
     private QuestionModel prevSelectedQuestion;
-    public final String currentDir = System.getProperty("user.dir");
+    private String filePath;
 
 
     /**
      * Sets the starting state of this scene.
-     *
-     * Reads the content of the json file into a {@code Quiz} object.
-     * Then displays the questions on the {@code listView} of the scene.
-     * Sets {@code addButton} and {@code saveButton} buttons to un-clickable.
-     * @throws IOException if it cannot find the json file.
+     * * Sets {@code addButton} and {@code saveButton} buttons to un-clickable.
      */
-    public void initialize() throws IOException {
-
-        //InputStream form = getClass().getClassLoader().getResourceAsStream("custom.json");
-        File form = new File(currentDir + "\\custom.json");
-        if(!form.exists()){
-            return;
-        }
-        var reader = new ObjectMapper();
-        Quiz quiz = reader.readValue(form, Quiz.class);
-
-        List<QuestionModel> modelList = quiz.getQuestions()
-                .stream()
-                .map(Question::toModel)
-                .collect(Collectors.toList());
-        listView.setItems(FXCollections.observableArrayList(modelList));
+    public void initialize() {
         addButton.setDisable(true);
         saveButton.setDisable(true);
     }
@@ -113,13 +100,11 @@ public class QuizFormController {
     }
 
     /**
-     * Saves the content of {@code listView} into custom.json.
-     *
-     * I used absolute filepath instead of relative, because I couldn't solve the problem.
-     * @throws IOException if it cannot load the json file.
+     * Saves the file to the previously choosen location
+     * @param filePath on the current computer.
+     * @throws IOException in case the file save was not successful. {@code saveQuestion()} will catch it.
      */
-    @FXML
-    public void saveQuestion() throws Exception {
+    public void saveAs(String filePath) throws IOException {
         List<Question> list = listView.getItems()
                 .stream()
                 .map(QuestionModel::toData)
@@ -127,8 +112,30 @@ public class QuizFormController {
 
         var writer = new ObjectMapper();
         writer.enable(SerializationFeature.INDENT_OUTPUT);
-        writer.writeValue(new File(currentDir + "\\custom.json"), new Quiz(list));
+        writer.writeValue(new File(filePath + ".json"), new Quiz(list));
         Logger.info("Question saved");
+    }
+
+    /**
+     * Opens a {@code Filechooser} window for the user to choose the library, where the
+     * file will be saved.     *
+     *
+     * I used absolute filepath instead of relative, because I couldn't solve the problem.
+     */
+    @FXML
+    public void saveQuestion() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save Custom Quiz");
+        File file = fileChooser.showSaveDialog(null);
+        if(file != null){
+            Logger.info("Saving file {}", file);
+            try {
+                saveAs(file.getPath());
+                filePath = file.getPath();
+            } catch (IOException e) {
+                Logger.error(e, "Failed to save file");
+            }
+        }
     }
 
     /**
