@@ -1,6 +1,7 @@
 package quiz.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,11 +11,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.tinylog.Logger;
 import quiz.model.Question;
 import quiz.model.Quiz;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -44,19 +45,9 @@ public class QuizGameController {
     private int index;
     private int correctAnswers;
     private List<Question> questions;
+    private SimpleStringProperty filePath = new SimpleStringProperty(null);
     private InputStream form = getClass().getClassLoader().getResourceAsStream("default.json");
-    public final String currentDir = System.getProperty("user.dir");
 
-
-    /**
-     * Converts the custom.json file into an {@code InputStream}.
-     *
-     * @throws IOException if it cannot read from the json file.
-     */
-    private void convertCustomToInputStream() throws Exception {
-        File initialFile = new File(currentDir + "\\custom.json");
-        form = new FileInputStream(initialFile);
-    }
 
     /**
      * Reads default.json from the start.
@@ -68,21 +59,40 @@ public class QuizGameController {
             initialize();
             Logger.info("default.json successfully loaded");
         } catch (Exception e) {
-            Logger.error("Could not load default.json");
+            Logger.error("Failed to load default.json");
         }
     }
 
+
     /**
-     * Reads custom.json from the start.
+     * Opens the file from the previously chosen location
+     * @param filePath of the file on the current computer.
+     * @throws IOException in case the file save was not successful. {@code saveQuestion()} will catch it.
+     */
+    public void open(String filePath) throws Exception {
+        form = new FileInputStream(filePath);
+        this.filePath.set(filePath);
+        Logger.info("user file successfully loaded");
+        initialize();
+    }
+
+
+    /**
+     * Opens a {@code Filechooser} window for the user to choose the library, where the
+     * file will be opened from.
      */
     @FXML
     private void loadCustomFile() {
-        try {
-            convertCustomToInputStream();
-            initialize();
-            Logger.info("custom.json successfully loaded");
-        } catch (Exception e){
-            Logger.error("Could not load custom.json");
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Quiz");
+        File file = fileChooser.showOpenDialog(null);
+        if (file != null) {
+            Logger.debug("Opening file {}", file);
+            try {
+                open(file.getPath());
+            } catch (Exception e) {
+                Logger.error("Failed to open file");
+            }
         }
     }
 

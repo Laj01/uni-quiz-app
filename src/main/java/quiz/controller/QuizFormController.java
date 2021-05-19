@@ -100,8 +100,8 @@ public class QuizFormController {
     }
 
     /**
-     * Saves the file to the previously choosen location
-     * @param filePath on the current computer.
+     * Saves the file to the previously chosen location
+     * @param filePath of the file on the current computer.
      * @throws IOException in case the file save was not successful. {@code saveQuestion()} will catch it.
      */
     public void saveAs(String filePath) throws IOException {
@@ -113,25 +113,25 @@ public class QuizFormController {
         var writer = new ObjectMapper();
         writer.enable(SerializationFeature.INDENT_OUTPUT);
         writer.writeValue(new File(filePath + ".json"), new Quiz(list));
-        Logger.info("Question saved");
+        Logger.info("File saved");
     }
+
 
     /**
      * Opens a {@code Filechooser} window for the user to choose the library, where the
-     * file will be saved.     *
+     * file will be saved.
      *
      * I used absolute filepath instead of relative, because I couldn't solve the problem.
      */
     @FXML
     public void saveQuestion() {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Save Custom Quiz");
+        fileChooser.setTitle("Save Quiz");
         File file = fileChooser.showSaveDialog(null);
         if(file != null){
             Logger.info("Saving file {}", file);
             try {
                 saveAs(file.getPath());
-                filePath = file.getPath();
             } catch (IOException e) {
                 Logger.error(e, "Failed to save file");
             }
